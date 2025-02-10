@@ -1,6 +1,8 @@
 package teroria;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Ejemplo2 {
     public static void main(String[] args) {
@@ -39,6 +41,25 @@ public class Ejemplo2 {
         System.out.println("==================================");
         //vamos a filtrar los que no empiecen por vocal, mayúscula,
         // ordenados alfabéticemente (sorted) y mostramos en consola
-
+        cadenas.stream().
+                filter(cadena -> cadena.matches("[^aeiouAEIOUáéíóúÁÉÍÓÚ].*")).
+                sorted().
+                map(String::toUpperCase).
+                forEach(System.out::println);
+        System.out.println("===============================");
+        //lo mismo que antes, pero aquellos que NO acaben en vocal
+        //ordenación a la inversa
+        cadenas.stream().
+                filter(cadena -> cadena.matches(".*[^aeiouAEIOUáéíóúÁÉÍÓÚ]")).
+                sorted(Comparator.reverseOrder()).
+                map(String::toUpperCase).
+                forEach(System.out::println);
+        System.out.println("========================================");
+        List<String> lista = cadenas.stream().
+                filter(cadena -> cadena.matches(".*[^aeiouAEIOUáéíóúÁÉÍÓÚ]")).
+                sorted(Comparator.reverseOrder()).
+                map(String::toUpperCase).
+                toList();
+        System.out.println(lista);
     }
 }
