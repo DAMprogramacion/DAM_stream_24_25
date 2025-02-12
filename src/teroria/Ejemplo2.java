@@ -55,6 +55,7 @@ public class Ejemplo2 {
                 map(String::toUpperCase).
                 forEach(System.out::println);
         System.out.println("========================================");
+        //lo mismo que arriba, pero la operación final es recogerlo en una lista
         List<String> lista = cadenas.stream().
                 filter(cadena -> cadena.matches(".*[^aeiouAEIOUáéíóúÁÉÍÓÚ]")).
                 sorted(Comparator.reverseOrder()).
