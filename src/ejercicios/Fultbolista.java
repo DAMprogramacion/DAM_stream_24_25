@@ -51,7 +51,7 @@ public class Fultbolista {
         return String.format("%s;%d;%s;%s", nombreFutbolista, calcularEdad(), puesto, dni);
     }
 
-    private int calcularEdad() {
+    public int calcularEdad() {
         Period periodo = Period.between(fechaNacimiento, LocalDate.now());
         return periodo.getYears();
     }
